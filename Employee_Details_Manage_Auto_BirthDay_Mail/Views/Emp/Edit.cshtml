@@ -1,0 +1,108 @@
+﻿@* @model Employee_Details_Manage_Auto_BirthDay_Mail.Models.Employee
+<style>
+    .form-group {
+        margin-bottom: 20px;
+    }
+</style>
+<h2>Edit</h2>
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Emp_ID" />
+    <div class="form-group">
+        <label asp-for="FirstName">First Name</label>
+        <input type="text" maxlength="15" asp-for="FirstName" class="form-control" required pattern="[A-Za-z]+" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName">Last Name</label>
+        <input type="text" maxlength="15" asp-for="LastName" class="form-control" required pattern="[A-Za-z]+" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="BirthDate" class="control-label">BirthDate</label>
+        <input asp-for="BirthDate" class="form-control" />
+        <span asp-validation-for="BirthDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email_ID">Email</label>
+        <input type="email" maxlength="30" asp-for="Email_ID" class="form-control" />
+        <span asp-validation-for="Email_ID" class="text-danger"></span>
+    </div>
+  
+    <button type="submit" onclick="showSuccessAlert()" class="btn btn-primary">Save changes</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</form>
+<script>
+    function showSuccessAlert() {
+        alert('Update successful!');
+    }
+</script> *@
+@model Employee_Details_Manage_Auto_BirthDay_Mail.Models.Employee
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <h4 class="mt-4 mb-4">Edit Employee</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <form asp-action="Edit" method="post">
+                    <input type="hidden" asp-for="Emp_ID" />
+
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label">First Name</label>
+                        <input asp-for="FirstName" type="text" class="form-control" maxlength="15" required pattern="[A-Za-z]+" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label">Last Name</label>
+                        <input asp-for="LastName" class="form-control" maxlength="15" required pattern="[A-Za-z]+" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="BirthDate" class="control-label">BirthDate</label>
+                        <input asp-for="BirthDate" class="form-control" />
+                        <span asp-validation-for="BirthDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Email_ID" class="control-label">Email</label>
+                        <input asp-for="Email_ID" type="email" class="form-control" maxlength="30" />
+                        <span asp-validation-for="Email_ID" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" onclick="showSuccessAlert()">Save changes</button>
+                        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSuccessAlert() {
+            alert('Update successful!');
+        }
+    </script>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+
+</body>
+</html>
